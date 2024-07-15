@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Work Sans", sans-serif;
+}
+
+.settings-icon {
+  stroke: #FFF6FA;
+
+  &:hover {
+    stroke: #FC8619;
+  }
+}
+
+.mail-icon,
+.group-icon,
+.support-icon,
+.notification-icon {
+  fill: #FFF6FA;
+
+  &:hover {
+    fill: #FC8619;
+  }
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
