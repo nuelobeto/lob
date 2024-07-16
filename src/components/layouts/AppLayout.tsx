@@ -10,9 +10,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 		<div className="w-screen h-screen flex bg-[#1F1F39]">
 			<SideNav />
 			<main className="flex-1 h-full p-[8px] pl-0">
-				<div className="w-full h-full rounded-[4px] overflow-hidden relative">
+				<div className="w-full h-full rounded-[4px] overflow-hidden">
 					<Topbar />
-					<div className="w-full h-[calc(100%-60px)] bg-[#FFF6FA]">
+					<div className="w-full h-[calc(100%-60px)] bg-[#FFF6FA] relative">
 						<div className="w-full max-w-[1500px] mx-auto h-full px-[30px] pt-[16px] pb-[48px] overflow-auto hide-scroll">
 							{children}
 						</div>

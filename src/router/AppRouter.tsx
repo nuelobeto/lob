@@ -16,6 +16,13 @@ import AddModule from "@/pages/human_books/add-book/add-module/AddModule";
 import AddModuleForm from "@/pages/human_books/add-book/add-module/AddModuleForm";
 import AddContent from "@/pages/human_books/add-book/add-module/AddContent";
 import BookDetails from "@/pages/human_books/BookDetails";
+import Settings from "@/pages/settings/Settings";
+import PersonalInfo from "@/pages/settings/PersonalInfo";
+import AccountSecurity from "@/pages/settings/AccountSecurity";
+import Notification from "@/pages/settings/Notification";
+import Roles from "@/pages/settings/Roles";
+import Messages from "@/pages/messages/Messages";
+import ChatRoom from "@/pages/messages/ChatRoom";
 
 const AppRouter = () => {
 	return (
@@ -44,6 +51,17 @@ const AppRouter = () => {
 			</Route>
 			<Route path={routes.events} element={<Events />} />
 			<Route path={routes.activity} element={<Activity />} />
+			<Route path={routes.settings} element={<Settings />}>
+				<Route path={routes.personalInfo} element={<PersonalInfo />} />
+				<Route path={routes.personalInfo} element={<PersonalInfo />} />
+				<Route path={routes.account_security} element={<AccountSecurity />} />
+				<Route path={routes.notification} element={<Notification />} />
+				<Route path={routes.roles} element={<Roles />} />
+			</Route>
+			<Route path={routes.messages} element={<Messages />}>
+				<Route index element={<ChatRoom />} />
+				<Route path={`${routes.chat}/:chatId`} element={<ChatRoom />} />
+			</Route>
 		</Routes>
 	);
 };

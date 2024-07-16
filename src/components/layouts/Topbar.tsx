@@ -1,30 +1,31 @@
 import { NavLink } from "react-router-dom";
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import MailIcon from "../icons/MailIcon";
-import GroupIcon from "../icons/GroupIcon";
-import SettingsIcon from "../icons/SettingsIcon";
-import SupportIcon from "../icons/SupportIcon";
-import SearchIcon from "../icons/SearchIcon";
-import NotificationIcon from "../icons/NotificationIcon";
+import { routes } from "@/router/routes";
+import { RiSettings3Fill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { MdGroups2 } from "react-icons/md";
+import { BiSupport } from "react-icons/bi";
+import { RiNotification3Fill } from "react-icons/ri";
+import { MdOutlineSearch } from "react-icons/md";
 
 const Topbar = () => {
-	const links1 = [
+	const links = [
 		{
-			url: "",
-			icon: <SettingsIcon />,
+			url: `/${routes.settings}`,
+			icon: <RiSettings3Fill />,
 		},
 		{
-			url: "",
-			icon: <MailIcon />,
+			url: `/${routes.messages}`,
+			icon: <MdEmail />,
 		},
 		{
-			url: "",
-			icon: <GroupIcon />,
+			url: "/f",
+			icon: <MdGroups2 />,
 		},
 		{
-			url: "",
-			icon: <SupportIcon />,
+			url: "/ff",
+			icon: <BiSupport />,
 		},
 	];
 
@@ -32,11 +33,13 @@ const Topbar = () => {
 		<nav className="w-full bg-[#38385B]">
 			<div className="w-full max-w-[1500px] h-[60px] mx-auto flex items-center justify-between px-[30px]">
 				<div className="flex items-center gap-[24px]">
-					{links1.map((link, index) => (
+					{links.map((link, index) => (
 						<NavLink
 							key={index}
 							to={link.url}
-							className="nav-link w-[22px] h-[22px]">
+							className={({ isActive }) =>
+								`text-[26px] ${isActive ? "text-[#FC8619]" : "text-[#FFF6FA]"}`
+							}>
 							{link.icon}
 						</NavLink>
 					))}
@@ -46,14 +49,16 @@ const Topbar = () => {
 					<Input
 						type="search"
 						placeholder="Search"
-						leftIcon={<SearchIcon />}
+						leftIcon={
+							<MdOutlineSearch className="text-[22px] text-[#FFF6FA]" />
+						}
 						className="border-[#FFF6FA] bg-[#31314f] placeholder:text-[#8c8c8c] text-[#FFF6FA]"
 					/>
 				</div>
 
 				<div className="flex items-center gap-[24px]">
 					<NavLink to={`/`} className="w-[22px] h-[22px]">
-						<NotificationIcon />
+						<RiNotification3Fill className="text-[26px] text-[#FFF6FA]" />
 					</NavLink>
 					<div className="flex items-center gap-[16px]">
 						<p className="text-[14px] text-[#FFF6FA]">Admin</p>

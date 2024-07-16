@@ -11,4 +11,13 @@ export const routes = {
 	add_content: "add-content",
 	events: "events",
 	activity: "activity",
+	settings: "settings",
+	personalInfo: "personal-information",
+	account_security: "account-security",
+	notification: "notification",
+	roles: "roles",
+	messages: "messages",
+	chat: "chat",
+	forum: "forum",
+	support: "support",
 };
