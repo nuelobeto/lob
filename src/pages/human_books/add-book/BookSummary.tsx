@@ -7,8 +7,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RiCloseLine, RiEdit2Fill, RiCheckFill } from "react-icons/ri";
+import {
+	RiCloseLine,
+	RiEdit2Fill,
+	RiCheckFill,
+	RiAddFill,
+} from "react-icons/ri";
 import { Textarea } from "@/components/ui/textarea";
+import { BiSolidTrash } from "react-icons/bi";
+import { routes } from "@/router/routes";
 
 const BookSummary = () => {
 	const [title, setTitle] = useState("Book title");
@@ -36,7 +43,9 @@ const BookSummary = () => {
 
 	const cancelAboutEdit = () => {
 		setEditingAbout(false);
-		setAbout("Book title");
+		setAbout(
+			"Lorem ipsum dolor sit amet consectetur. Sed diam est tempus blandit eget diam. Nibh ac elit faucibus consequat tortor pretium. Sed nunc purus vel nulla quis volutpat pellentesque aliquam. Scelerisque erat ipsum mauris sed semper massa."
+		);
 	};
 
 	const saveAbout = () => {
@@ -53,7 +62,12 @@ const BookSummary = () => {
 		<AppLayout>
 			<PageHeaderWrapper>
 				<Breadcrumbs />
-				<Button onClick={() => navigate(-1)}>Back</Button>
+				<div className="flex justify-between">
+					<Button onClick={() => navigate(-1)}>Back</Button>
+					<Button onClick={() => navigate(`/${routes.human_books}`)}>
+						Publish
+					</Button>
+				</div>
 			</PageHeaderWrapper>
 
 			<PageHeaderDivider />
@@ -89,8 +103,8 @@ const BookSummary = () => {
 					</div>
 				</div>
 
-				<div className="w-full max-w-[550px] mx-auto mt-[48px]">
-					<div className="">
+				<div className="w-full max-w-[550px] mt-[24px]">
+					<div>
 						<label
 							htmlFor="file"
 							className="w-[164px] h-full flex items-center justify-center relative cursor-pointer rounded-[12px] overflow-hidden group">
@@ -152,9 +166,92 @@ const BookSummary = () => {
 							</div>
 						)}
 					</div>
-
-					<Button className="mt-[32px]">Add New Module</Button>
 				</div>
+
+				<div className="flex flex-col mt-[24px] w-full max-w-[900px] gap-[24px]">
+					<div className="p-[12px] rounded-[12px] border border-[#FFD2D0] bg-[#FEFEFE] flex gap-[12px]">
+						<div className="w-[140px] h-[140px]">
+							<img
+								src="/assets/woman.png"
+								alt=""
+								className="w-full h-full object-cover rounded-[12px]"
+							/>
+						</div>
+						<div className="flex flex-col flex-1 pr-[48px]">
+							<h3 className="font-[600] text-[14px] text-[#38385B]">
+								MODULE 1
+							</h3>
+							<h4 className="font-[600] text-[14px] text-[#38385B] mt-[10px]">
+								Life and career Omolara Oriye
+							</h4>
+							<p className="font-[400] text-[14px] text-[#38385B] mt-[10px]">
+								<span className="font-[600]">Summary of Module:</span> Lorem
+								ipsum dolor sit amet consectetur. Sed diam est tempus blandit
+								eget diam. Nibh ac elit faucibus consequat tortor pretium. Sed
+								nunc purus vel nulla quis volutpat pellentesque aliquam.
+								Scelerisque erat ipsum mauris sed semper massa.
+							</p>
+						</div>
+						<div className="flex flex-col justify-center gap-[12px]">
+							<Button
+								variant="ghost"
+								size="icon"
+								onClick={() =>
+									navigate(
+										`/${routes.human_books}/${routes.add_book}/${routes.add_module}/${routes.add_content}?book=bookId&module=moduleId`
+									)
+								}>
+								<RiEdit2Fill className="text-[20px] fill-[#38385B]" />
+							</Button>
+							<Button variant="ghost" size="icon">
+								<BiSolidTrash className="text-[20px] fill-[#38385B]" />
+							</Button>
+						</div>
+					</div>
+					<div className="p-[12px] rounded-[12px] border border-[#FFD2D0] bg-[#FEFEFE] flex gap-[12px]">
+						<div className="w-[140px] h-[140px]">
+							<img
+								src="/assets/woman.png"
+								alt=""
+								className="w-full h-full object-cover rounded-[12px]"
+							/>
+						</div>
+						<div className="flex flex-col flex-1 pr-[48px]">
+							<h3 className="font-[600] text-[14px] text-[#38385B]">
+								MODULE 2
+							</h3>
+							<h4 className="font-[600] text-[14px] text-[#38385B] mt-[10px]">
+								Legacy of Omolara Oriye
+							</h4>
+							<p className="font-[400] text-[14px] text-[#38385B] mt-[10px]">
+								<span className="font-[600]">Summary of Module:</span> Lorem
+								ipsum dolor sit amet consectetur. Sed diam est tempus blandit
+								eget diam. Nibh ac elit faucibus consequat tortor pretium. Sed
+								nunc purus vel nulla quis volutpat pellentesque aliquam.
+								Scelerisque erat ipsum mauris sed semper massa.
+							</p>
+						</div>
+						<div className="flex flex-col justify-center gap-[12px]">
+							<Button
+								variant="ghost"
+								size="icon"
+								onClick={() =>
+									navigate(
+										`/${routes.human_books}/${routes.add_book}/${routes.add_module}/${routes.add_content}?book=bookId&module=moduleId`
+									)
+								}>
+								<RiEdit2Fill className="text-[20px] fill-[#38385B]" />
+							</Button>
+							<Button variant="ghost" size="icon">
+								<BiSolidTrash className="text-[20px] fill-[#38385B]" />
+							</Button>
+						</div>
+					</div>
+				</div>
+
+				<Button className="mt-[24px]">
+					<RiAddFill className="mr-[8px] text-[18px]" /> Add Module
+				</Button>
 			</div>
 		</AppLayout>
 	);

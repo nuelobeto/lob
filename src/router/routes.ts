@@ -6,7 +6,9 @@ export const routes = {
 	human_books: "human-books",
 	add_book: "add-new-books",
 	book_summary: "book-summary",
+	book_details: "details",
 	add_module: "add-module",
+	add_content: "add-content",
 	events: "events",
 	activity: "activity",
 };

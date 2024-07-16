@@ -28,3 +28,11 @@
 .hide-scroll::-webkit-scrollbar {
   display: none;
 }
+
+tbody {
+  tr {
+    &:hover {
+      background-color: #f9fafb;
+    }
+  }
+}

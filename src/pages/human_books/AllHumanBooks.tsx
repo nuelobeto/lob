@@ -189,7 +189,14 @@ const AllHumanBooks = () => {
 											</Button>
 											{activeRow === book?.id && (
 												<TableDropdownContent setActiveRow={setActiveRow}>
-													<TableDropdownButton>Details</TableDropdownButton>
+													<TableDropdownButton
+														onClick={() =>
+															navigate(
+																`/${routes.human_books}/${routes.book_details}?book=${book?.id}`
+															)
+														}>
+														Details
+													</TableDropdownButton>
 													<TableDropdownButton>Delete</TableDropdownButton>
 												</TableDropdownContent>
 											)}

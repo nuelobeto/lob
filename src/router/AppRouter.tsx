@@ -10,9 +10,12 @@ import AllHumanBooks from "@/pages/human_books/AllHumanBooks";
 import AddBook from "@/pages/human_books/add-book/AddBook";
 import AddBookForm from "@/pages/human_books/add-book/AddBookForm";
 import BookSummary from "@/pages/human_books/add-book/BookSummary";
-import AddModule from "@/pages/human_books/add-book/AddModule";
 import Events from "@/pages/events/Events";
 import Activity from "@/pages/activity/Activity";
+import AddModule from "@/pages/human_books/add-book/add-module/AddModule";
+import AddModuleForm from "@/pages/human_books/add-book/add-module/AddModuleForm";
+import AddContent from "@/pages/human_books/add-book/add-module/AddContent";
+import BookDetails from "@/pages/human_books/BookDetails";
 
 const AppRouter = () => {
 	return (
@@ -31,9 +34,13 @@ const AppRouter = () => {
 				<Route index element={<AllHumanBooks />} />
 				<Route path={routes.add_book} element={<AddBook />}>
 					<Route index element={<AddBookForm />} />
-					<Route path={`${routes.add_module}`} element={<AddModule />} />
-					<Route path={`${routes.book_summary}`} element={<BookSummary />} />
+					<Route path={routes.add_module} element={<AddModule />}>
+						<Route index element={<AddModuleForm />} />
+						<Route path={routes.add_content} element={<AddContent />} />
+					</Route>
+					<Route path={routes.book_summary} element={<BookSummary />} />
 				</Route>
+				<Route path={routes.book_details} element={<BookDetails />} />
 			</Route>
 			<Route path={routes.events} element={<Events />} />
 			<Route path={routes.activity} element={<Activity />} />

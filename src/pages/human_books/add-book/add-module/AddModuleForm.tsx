@@ -26,8 +26,9 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { routes } from "@/router/routes";
 
-const AddModule = () => {
+const AddModuleForm = () => {
 	const navigate = useNavigate();
 
 	const formSchema = z.object({
@@ -35,22 +36,21 @@ const AddModule = () => {
 			message: "",
 		}),
 		cover_image: z
-			.instanceof(FileList)
-			.refine((files) => files.length === 1, "Upload an image cover")
+			.union([z.instanceof(FileList), z.undefined()])
+			.refine((files) => files?.length === 1)
 			.refine((files) => {
-				const file = files.item(0);
+				const file = files?.item(0);
 				return (
-					file?.type === "image/png" ||
-					file?.type === "image/jpeg" ||
-					file?.type === "image/jpg"
+					!file ||
+					file.type === "image/png" ||
+					file.type === "image/jpeg" ||
+					file.type === "image/jpg"
 				);
 			}, "Only PNG, JPG, and JPEG files are allowed."),
 		summary: z.string().min(1, {
 			message: "",
 		}),
-		content_type: z.string().min(1, {
-			message: "",
-		}),
+		content_type: z.string().optional(),
 		text_content: z.string().optional(),
 		main_audio_language: z.string().optional(),
 		subtitles: z.string().optional(),
@@ -64,7 +64,8 @@ const AddModule = () => {
 					file?.type === "video/avi" ||
 					file?.type === "video/mov"
 				);
-			}, "Only MP4, AVI, and MOV files are allowed."),
+			}, "Only MP4, AVI, and MOV files are allowed.")
+			.optional(),
 		video_description: z.string().optional(),
 	});
 
@@ -90,6 +91,9 @@ const AddModule = () => {
 
 	const addModule = (values: z.infer<typeof formSchema>) => {
 		console.log(values);
+		navigate(
+			`/${routes.human_books}/${routes.add_book}/${routes.add_module}/${routes.add_content}?book=bookId&module=moduleId`
+		);
 	};
 
 	return (
@@ -103,7 +107,7 @@ const AddModule = () => {
 
 			<PageHeaderDivider />
 
-			<div className="mt-[36px]">
+			<div className="mt-[36px] pb-[80px]">
 				<h2 className="font-[500] text-[18px] text-[#38385B]">Book Title</h2>
 				<div className="flex mt-[24px] w-full max-w-[800px] mx-auto gap-[64px]">
 					<h3 className="font-[500] text-[16px] text-[#38385B]">Module 1</h3>
@@ -307,24 +311,18 @@ const AddModule = () => {
 										/>
 									</div>
 								)}
-
-								<div className="w-full h-[1px] bg-[#C6C6C6] my-[24px]"></div>
-
-								<div className="w-full flex justify-end gap-[24px]">
-									<Button onClick={form.handleSubmit(addModule)}>
-										Submit module
-									</Button>
-									<Button onClick={form.handleSubmit(addModule)}>
-										Save & continue
-									</Button>
-								</div>
 							</form>
 						</Form>
 					</div>
 				</div>
 			</div>
+
+			<div className="absolute bottom-0 left-[30px]  w-[calc(100%-60px)] h-[80px] border-t border-[#C6C6C6] bg-[#FFF6FA] flex justify-end items-center gap-[24px]">
+				<Button onClick={form.handleSubmit(addModule)}>Submit module</Button>
+				<Button onClick={form.handleSubmit(addModule)}>Save & continue</Button>
+			</div>
 		</AppLayout>
 	);
 };
 
-export default AddModule;
+export default AddModuleForm;
