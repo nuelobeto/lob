@@ -20,11 +20,11 @@ const Topbar = () => {
 			icon: <MdEmail />,
 		},
 		{
-			url: "/f",
+			url: "/",
 			icon: <MdGroups2 />,
 		},
 		{
-			url: "/ff",
+			url: "/",
 			icon: <BiSupport />,
 		},
 	];
