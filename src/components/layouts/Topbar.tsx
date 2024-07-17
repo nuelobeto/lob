@@ -20,11 +20,11 @@ const Topbar = () => {
 			icon: <MdEmail />,
 		},
 		{
-			url: "/",
+			url: `/${routes.forum}`,
 			icon: <MdGroups2 />,
 		},
 		{
-			url: "/",
+			url: `/${routes.support}`,
 			icon: <BiSupport />,
 		},
 	];

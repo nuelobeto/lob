@@ -5,6 +5,7 @@ import { MdOutlineSearch } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
 import { FiEdit } from "react-icons/fi";
+import ChatPreview from "@/components/modules/messages/ChatPreview";
 
 const Messages = () => {
 	return (
@@ -28,25 +29,7 @@ const Messages = () => {
 						className="bg-gray-200"
 					/>
 					<div className="w-full h-[calc(100%-70px-40px)] pt-[40px] pb-[20px] flex flex-col gap-[16px] overflow-hidden">
-						<div className="flex items-center gap-[12px]">
-							<img
-								src="/assets/default_pic.png"
-								alt=""
-								className="w-[48px] h-[48px] rounded-full block object-cover"
-							/>
-							<div className="flex-1">
-								<div className="flex items-center justify-between text-[14px]">
-									<p className="max-w-[180px] overflow-hidden">Lorem ipsum</p>
-									<p>4:31 PM</p>
-								</div>
-
-								<div className="flex items-center justify-between text-[12px]">
-									<p className="font-[300] max-w-[180px] overflow-hidden text-[#828282]">
-										Lorem ipsum dolor sit amet.
-									</p>
-								</div>
-							</div>
-						</div>
+						<ChatPreview />
 					</div>
 				</div>
 

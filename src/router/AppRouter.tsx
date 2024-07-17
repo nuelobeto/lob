@@ -23,6 +23,12 @@ import Notification from "@/pages/settings/Notification";
 import Roles from "@/pages/settings/Roles";
 import Messages from "@/pages/messages/Messages";
 import ChatRoom from "@/pages/messages/ChatRoom";
+import Forum from "@/pages/forum/Forum";
+import ForumMessages from "@/pages/forum/form_messages/ForumMessages";
+import Comments from "@/pages/forum/form_messages/Comments";
+import FlaggedComments from "@/pages/forum/form_messages/FlaggedComments";
+import Support from "@/pages/support/Support";
+import AllTickets from "@/pages/support/AllTickets";
 
 const AppRouter = () => {
 	return (
@@ -60,7 +66,21 @@ const AppRouter = () => {
 			</Route>
 			<Route path={routes.messages} element={<Messages />}>
 				<Route index element={<ChatRoom />} />
-				<Route path={`${routes.chat}/:chatId`} element={<ChatRoom />} />
+				<Route path=":chatId" element={<ChatRoom />} />
+			</Route>
+			<Route path={routes.forum} element={<Forum />}>
+				<Route index element={<ForumMessages />} />
+				<Route path=":forumId" element={<ForumMessages />}>
+					<Route path={routes.forum_comments} element={<Comments />} />
+					<Route
+						path={routes.forum_flagged_comments}
+						element={<FlaggedComments />}
+					/>
+				</Route>
+			</Route>
+			<Route path={routes.support} element={<Support />}>
+				<Route index element={<AllTickets />} />
+				<Route path=":ticketId" element={<AllTickets />} />
 			</Route>
 		</Routes>
 	);

@@ -17,7 +17,8 @@ export const routes = {
 	notification: "notification",
 	roles: "roles",
 	messages: "messages",
-	chat: "chat",
 	forum: "forum",
+	forum_comments: "comments",
+	forum_flagged_comments: "flagged-comments",
 	support: "support",
 };
