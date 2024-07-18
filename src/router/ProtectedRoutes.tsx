@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { routes } from "./routes";
 
 const ProtectedRoutes = () => {
-	const user = null;
+	const user = "user";
 	const navigate = useNavigate();
 
 	useEffect(() => {

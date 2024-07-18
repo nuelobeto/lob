@@ -19,10 +19,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "@/router/routes";
 
 const SignIn = () => {
+	const navigate = useNavigate();
+
 	const formSchema = z.object({
 		email: z.string().min(1, {
 			message: "Please enter a registered or Valid email",
@@ -44,6 +46,7 @@ const SignIn = () => {
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log(values);
+		navigate(`/${routes.dashboard}`);
 	}
 
 	return (
