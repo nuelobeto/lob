@@ -39,10 +39,7 @@ import Otp from "@/pages/auth/Otp";
 const AppRouter = () => {
 	return (
 		<Routes>
-			<Route
-				path="/"
-				element={<Navigate to={`/${routes.dashboard}`} replace />}
-			/>
+			<Route path="/" element={<Navigate to={`/${routes.auth}`} replace />} />
 			<Route path={routes.auth} element={<Auth />}>
 				<Route path={routes.sign_in} element={<SignIn />} />
 				<Route path={routes.request_access} element={<RequestAccess />} />
