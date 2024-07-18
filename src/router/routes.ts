@@ -1,4 +1,9 @@
 export const routes = {
+	auth: "auth",
+	sign_in: "sign-in",
+	request_access: "request-access",
+	request_access_success: "request-access/success",
+	otp: "otp",
 	dashboard: "dashboard",
 	readers: "readers",
 	invite_readers: "invite-readers",

@@ -29,7 +29,7 @@ const SideNav = () => {
 	return (
 		<nav className="w-[200px] h-full bg-[url('/assets/bg-pattern.svg')] bg-no-repeat bg-cover bg-center relative flex flex-col gap-[]">
 			<div className="w-[180px] mx-auto p-[12px]">
-				<img src="/assets/logo.svg" alt="" className="w-full block" />
+				<img src="/assets/logo-main.png" alt="" className="w-full block" />
 			</div>
 
 			<div className="pl-[12px] flex flex-col gap-[8px] pt-[64px] h-[calc(100%-180px-76px)]">

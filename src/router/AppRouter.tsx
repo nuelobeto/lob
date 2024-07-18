@@ -29,6 +29,12 @@ import Comments from "@/pages/forum/form_messages/Comments";
 import FlaggedComments from "@/pages/forum/form_messages/FlaggedComments";
 import Support from "@/pages/support/Support";
 import AllTickets from "@/pages/support/AllTickets";
+import Auth from "@/pages/auth/Auth";
+import SignIn from "@/pages/auth/SignIn";
+import RequestAccess from "@/pages/auth/RequestAccess";
+import RequestAccessSuccess from "@/pages/auth/RequestAccessSuccess";
+import ProtectedRoutes from "./ProtectedRoutes";
+import Otp from "@/pages/auth/Otp";
 
 const AppRouter = () => {
 	return (
@@ -37,50 +43,62 @@ const AppRouter = () => {
 				path="/"
 				element={<Navigate to={`/${routes.dashboard}`} replace />}
 			/>
-			<Route path={routes.dashboard} element={<Dashboard />} />
-			<Route path={routes.readers} element={<Readers />}>
-				<Route index element={<AllReaders />} />
-				<Route path={routes.invite_readers} element={<InviteReaders />} />
-				<Route path={routes.import_csv} element={<ImportReadersCsv />} />
+			<Route path={routes.auth} element={<Auth />}>
+				<Route path={routes.sign_in} element={<SignIn />} />
+				<Route path={routes.request_access} element={<RequestAccess />} />
+				<Route
+					path={routes.request_access_success}
+					element={<RequestAccessSuccess />}
+				/>
+				<Route path={routes.otp} element={<Otp />} />
 			</Route>
-			<Route path={routes.human_books} element={<HumanBooks />}>
-				<Route index element={<AllHumanBooks />} />
-				<Route path={routes.add_book} element={<AddBook />}>
-					<Route index element={<AddBookForm />} />
-					<Route path={routes.add_module} element={<AddModule />}>
-						<Route index element={<AddModuleForm />} />
-						<Route path={routes.add_content} element={<AddContent />} />
+
+			<Route element={<ProtectedRoutes />}>
+				<Route path={routes.dashboard} element={<Dashboard />} />
+				<Route path={routes.readers} element={<Readers />}>
+					<Route index element={<AllReaders />} />
+					<Route path={routes.invite_readers} element={<InviteReaders />} />
+					<Route path={routes.import_csv} element={<ImportReadersCsv />} />
+				</Route>
+				<Route path={routes.human_books} element={<HumanBooks />}>
+					<Route index element={<AllHumanBooks />} />
+					<Route path={routes.add_book} element={<AddBook />}>
+						<Route index element={<AddBookForm />} />
+						<Route path={routes.add_module} element={<AddModule />}>
+							<Route index element={<AddModuleForm />} />
+							<Route path={routes.add_content} element={<AddContent />} />
+						</Route>
+						<Route path={routes.book_summary} element={<BookSummary />} />
 					</Route>
-					<Route path={routes.book_summary} element={<BookSummary />} />
+					<Route path={routes.book_details} element={<BookDetails />} />
 				</Route>
-				<Route path={routes.book_details} element={<BookDetails />} />
-			</Route>
-			<Route path={routes.events} element={<Events />} />
-			<Route path={routes.activity} element={<Activity />} />
-			<Route path={routes.settings} element={<Settings />}>
-				<Route path={routes.personalInfo} element={<PersonalInfo />} />
-				<Route path={routes.personalInfo} element={<PersonalInfo />} />
-				<Route path={routes.account_security} element={<AccountSecurity />} />
-				<Route path={routes.notification} element={<Notification />} />
-				<Route path={routes.roles} element={<Roles />} />
-			</Route>
-			<Route path={routes.messages} element={<Messages />}>
-				<Route index element={<ChatRoom />} />
-				<Route path=":chatId" element={<ChatRoom />} />
-			</Route>
-			<Route path={routes.forum} element={<Forum />}>
-				<Route index element={<ForumMessages />} />
-				<Route path=":forumId" element={<ForumMessages />}>
-					<Route path={routes.forum_comments} element={<Comments />} />
-					<Route
-						path={routes.forum_flagged_comments}
-						element={<FlaggedComments />}
-					/>
+				<Route path={routes.events} element={<Events />} />
+				<Route path={routes.activity} element={<Activity />} />
+				<Route path={routes.settings} element={<Settings />}>
+					<Route path={routes.personalInfo} element={<PersonalInfo />} />
+					<Route path={routes.personalInfo} element={<PersonalInfo />} />
+					<Route path={routes.account_security} element={<AccountSecurity />} />
+					<Route path={routes.notification} element={<Notification />} />
+					<Route path={routes.roles} element={<Roles />} />
 				</Route>
-			</Route>
-			<Route path={routes.support} element={<Support />}>
-				<Route index element={<AllTickets />} />
-				<Route path=":ticketId" element={<AllTickets />} />
+				<Route path={routes.messages} element={<Messages />}>
+					<Route index element={<ChatRoom />} />
+					<Route path=":chatId" element={<ChatRoom />} />
+				</Route>
+				<Route path={routes.forum} element={<Forum />}>
+					<Route index element={<ForumMessages />} />
+					<Route path=":forumId" element={<ForumMessages />}>
+						<Route path={routes.forum_comments} element={<Comments />} />
+						<Route
+							path={routes.forum_flagged_comments}
+							element={<FlaggedComments />}
+						/>
+					</Route>
+				</Route>
+				<Route path={routes.support} element={<Support />}>
+					<Route index element={<AllTickets />} />
+					<Route path=":ticketId" element={<AllTickets />} />
+				</Route>
 			</Route>
 		</Routes>
 	);

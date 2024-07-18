@@ -6,6 +6,10 @@
   font-family: "Work Sans", sans-serif;
 }
 
+.abril-font {
+  font-family: "Abril Fatface", serif;
+}
+
 .hide-scroll::-webkit-scrollbar {
   display: none;
 }
